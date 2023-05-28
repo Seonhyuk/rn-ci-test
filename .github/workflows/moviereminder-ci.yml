@@ -16,5 +16,7 @@ jobs:
           node-version: '18'
       - name: Install packages
         run: yarn install --frozen-lockfile
+        working-directory: ${{ env.PROJECT_PATH }}
       - name: Test
         run: yarn run test
+        working-directory: ${{ env.PROJECT_PATH }}
