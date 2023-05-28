@@ -4,6 +4,6 @@
 RCT_EXTERN_METHOD(createCalendarEvent:(double) timestampInSec
                   title:(NSString *) title
                   resolver: (RCTPromiseResolveBlock) resolve
-                  rejecter: (RCTPromiseRejectBlock) reject
+                  rejector: (RCTPromiseRejectBlock) reject
                   )
 @end
