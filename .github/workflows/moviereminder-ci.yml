@@ -6,7 +6,7 @@ on:
 jobs:
   moviereminder-test:
     name: Test JS
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     env:
       PROJECT_PATH: MovieReminder
     steps:
@@ -16,7 +16,5 @@ jobs:
           node-version: '18'
       - name: Install packages
         run: yarn install --frozen-lockfile
-        working-directory: ${{ env.PROJECT_PATH }}
       - name: Test
         run: yarn run test
-        working-directory: ${{ env.PROJECT_PATH }}
