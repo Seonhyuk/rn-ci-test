@@ -1,15 +1,21 @@
 {
   "name": "MovieReminder",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios --simulator \"iPhone 14 Pro\"",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "dev": "react-native run-android && react-native run-ios --simulator \"iPhone 14 Pro\"",
+    "staging-ios": "react-native run-ios --configuration Staging",
+    "staging-android": "react-native run-android --variant=releaseStaging",
+    "code-push-staging-ios": "appcenter codepush release-react -a duolc/MovieReminder-iOS -d Staging",
+    "code-push-staging-android": "appcenter codepush release-react -a duolc/MovieReminder-Android -d Staging"
   },
   "dependencies": {
+    "@notifee/react-native": "^7.7.1",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@tanstack/react-query": "^4.29.7",
@@ -18,6 +24,7 @@
     "open-color": "^1.9.1",
     "react": "18.1.0",
     "react-native": "0.70.3",
+    "react-native-code-push": "^7.0.5",
     "react-native-safe-area-context": "^4.5.3",
     "react-native-screens": "^3.20.0",
     "react-native-vector-icons": "^9.2.0"
@@ -26,6 +33,7 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@tsconfig/react-native": "^2.0.2",
     "@types/jest": "^26.0.23",
     "@types/react": "^18.0.21",

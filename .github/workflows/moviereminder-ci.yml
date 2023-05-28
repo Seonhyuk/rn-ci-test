@@ -1,0 +1,20 @@
+name: moviereminder-ci
+on:
+  pull_request:
+    branches:
+      - 'main'
+jobs:
+  moviereminder-test:
+    name: Test JS
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_PATH: MovieReminder
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+      - name: Test
+        run: yarn run test

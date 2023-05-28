@@ -9,13 +9,11 @@ import Foundation
 import EventKit
 
 @objc(CalendarModule)
+
 class CalendarModule: NSObject {
   var store = EKEventStore()
   
-  @objc func createCalendarEvent(_ timeStampInSec: Double,
-                                 title: String,
-                                 resolver resolve: @escaping RCTPromiseResolveBlock,
-                                 rejector reject: @escaping RCTPromiseRejectBlock) -> Void {
+  @objc func createCalendarEvent(_ timeStampInSec: Double, title: String, resolver resolve: @escaping RCTPromiseResolveBlock, rejector reject: @escaping RCTPromiseRejectBlock) -> Void {
     store.requestAccess(to: .event) { granted, error in
       if (error != nil) {
         reject("permission_error", error?.localizedDescription, error)

@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  useColorScheme,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -60,9 +61,18 @@ interface ScreenProp {
   children?: React.ReactNode;
   title?: string;
   headerVisible?: boolean;
+  renderLeftComponent?: () => JSX.Element;
+  renderRightComponent?: () => JSX.Element;
 }
 
-const Screen = ({ children, title, headerVisible = true }: ScreenProp) => {
+const Screen = ({
+  children,
+  title,
+  headerVisible = true,
+  renderLeftComponent,
+  renderRightComponent,
+}: ScreenProp) => {
+  const colorScheme = useColorScheme();
   const { goBack, canGoBack } = useNavigation();
 
   const onPressBackButton = useCallback(() => {
@@ -72,7 +82,13 @@ const Screen = ({ children, title, headerVisible = true }: ScreenProp) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
-        barStyle={Platform.OS === 'ios' ? 'light-content' : 'dark-content'}
+        barStyle={
+          Platform.OS === 'ios'
+            ? 'light-content'
+            : colorScheme === 'dark'
+            ? 'light-content'
+            : 'dark-content'
+        }
       />
       {headerVisible && (
         <View style={styles.header}>
@@ -82,11 +98,14 @@ const Screen = ({ children, title, headerVisible = true }: ScreenProp) => {
                 <Icon style={styles.backIcon} name="arrow-back" />
               </TouchableOpacity>
             )}
+            {renderLeftComponent != null && renderLeftComponent()}
           </View>
           <View style={styles.center}>
             <Text style={styles.headerTitle}>{title}</Text>
           </View>
-          <View style={styles.right} />
+          <View style={styles.right}>
+            {renderRightComponent != null && renderRightComponent()}
+          </View>
         </View>
       )}
       <View style={styles.content}>{children}</View>

@@ -3,6 +3,8 @@ export type RootStackParamList = {
   Movie: {
     id: number;
   };
+  Reminders: undefined;
+  Loading: undefined;
 };
 
 export interface Movie {
