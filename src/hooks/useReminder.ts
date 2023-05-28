@@ -10,8 +10,11 @@ import notifee, {
 import { Platform } from 'react-native';
 import moment from 'moment';
 
+const MAX_REMINDER_NUM_FOR_FREE = 2;
+
 const useReminder = () => {
   const [channelId, setChannelId] = useState<string | null>(null);
+  const subscribed = false;
 
   useEffect(() => {
     (async () => {
@@ -35,6 +38,14 @@ const useReminder = () => {
     const notifications = await notifee.getTriggerNotifications();
     setReminders(notifications);
   }, []);
+
+  const canAddReminder = useCallback(async () => {
+    const triggeredNotifications = await notifee.getTriggerNotifications();
+
+    return (
+      subscribed || triggeredNotifications.length < MAX_REMINDER_NUM_FOR_FREE
+    );
+  }, [subscribed]);
 
   const addReminder = useCallback(
     async (releaseDate: string, title: string, movieId: number) => {
@@ -101,6 +112,7 @@ const useReminder = () => {
   return {
     addReminder,
     removeReminder,
+    canAddReminder,
     hasReminder,
     reminders,
   };
