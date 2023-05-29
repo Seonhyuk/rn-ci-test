@@ -7,8 +7,6 @@ jobs:
   moviereminder-test:
     name: Test JS
     runs-on: ubuntu-latest
-    env:
-      PROJECT_PATH: MovieReminder
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
