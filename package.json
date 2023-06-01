@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios --simulator \"iPhone 14 Pro\"",
+    "ios": "react-native run-ios --simulator \"iPhone 14 Pro (16.2)\"",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "dev": "react-native run-android && react-native run-ios --simulator \"iPhone 14 Pro\"",
+    "dev": "react-native run-android && react-native run-ios --simulator \"iPhone 14 Pro (16.2)\"",
     "staging-ios": "react-native run-ios --configuration Staging",
     "staging-android": "react-native run-android --variant=releaseStaging",
     "code-push-staging-ios": "appcenter codepush release-react -a duolc/MovieReminder-iOS -d Staging",
