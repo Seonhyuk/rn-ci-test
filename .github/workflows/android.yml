@@ -24,4 +24,4 @@ jobs:
       - name: Grant execute permission for gradlew
         run: cd android && chmod +x gradlew
       - name: Build with Gradle
-        run: cd android && ./gradlew build --variant=releaseStaging
+        run: cd android && ./gradlew build --profile assembleReleaseStaging
