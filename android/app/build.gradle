@@ -246,7 +246,7 @@ android {
         releaseStaging {
             signingConfig signingConfigs.debug
             
-            resValue "string", "CodePushDeploymentKey", '"tPqV1HnbjpNTDrfBcEGWj3yYrW3uykDlzUBVL"'
+            resValue "string", "CodePushDeploymentKey", System.getenv()["CODEPUSH_ANDROID_STAGING_KEY"]
             matchingFallbacks = ['release']
         }
 
@@ -255,7 +255,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
 
-            resValue "string", "CodePushDeploymentKey", '"yIT1-rDfvvxHSPREdDGh11IoWsVecYuH7o4b6"'
+            resValue "string", "CodePushDeploymentKey", System.getenv()["CODEPUSH_ANDROID_PROD_KEY"]
         }
     }
 
