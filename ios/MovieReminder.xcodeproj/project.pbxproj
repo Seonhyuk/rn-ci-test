@@ -12,6 +12,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		61103BD12A331EE5006F6BFE /* staging_env.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 61103BD02A331EE5006F6BFE /* staging_env.xcconfig */; };
+		61103BD22A331EE5006F6BFE /* staging_env.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 61103BD02A331EE5006F6BFE /* staging_env.xcconfig */; };
 		6116FB292A1AFAAE006A950C /* CalendarModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116FB282A1AFAAE006A950C /* CalendarModule.swift */; };
 		6116FB2B2A1AFAE6006A950C /* CalendarModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6116FB2A2A1AFAE6006A950C /* CalendarModuleBridge.m */; };
 		7699B88040F8A987B510C191 /* libPods-MovieReminder-MovieReminderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-MovieReminder-MovieReminderTests.a */; };
@@ -43,6 +45,8 @@
 		5709B34CF0A7D63546082F79 /* Pods-MovieReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieReminder.release.xcconfig"; path = "Target Support Files/Pods-MovieReminder/Pods-MovieReminder.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-MovieReminder-MovieReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieReminder-MovieReminderTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieReminder-MovieReminderTests/Pods-MovieReminder-MovieReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-MovieReminder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MovieReminder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61103BD02A331EE5006F6BFE /* staging_env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = staging_env.xcconfig; sourceTree = "<group>"; };
+		61103BD32A331EF2006F6BFE /* prod_env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = prod_env.xcconfig; sourceTree = "<group>"; };
 		6116FB272A1AFAAD006A950C /* MovieReminder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieReminder-Bridging-Header.h"; sourceTree = "<group>"; };
 		6116FB282A1AFAAE006A950C /* CalendarModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModule.swift; sourceTree = "<group>"; };
 		6116FB2A2A1AFAE6006A950C /* CalendarModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarModuleBridge.m; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				61103BD32A331EF2006F6BFE /* prod_env.xcconfig */,
+				61103BD02A331EE5006F6BFE /* staging_env.xcconfig */,
 				13B07FAE1A68108700A75B9A /* MovieReminder */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MovieReminderTests */,
@@ -287,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61103BD22A331EE5006F6BFE /* staging_env.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +303,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				61103BD12A331EE5006F6BFE /* staging_env.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +597,7 @@
 		};
 		61C96B152A230D6500030E20 /* Staging */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61103BD02A331EE5006F6BFE /* staging_env.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -616,7 +625,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODEPUSH_KEY = pWbyqKlT7trMAwmF95UgHwSSksGRgCzElXlLJ;
+				CODEPUSH_KEY = "$(CODEPUSH_KEY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -780,6 +789,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61103BD32A331EF2006F6BFE /* prod_env.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -807,7 +817,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODEPUSH_KEY = "Wvs_AG1STuJIrzVxNrC2AKlHJNhiY15yn-4mM";
+				CODEPUSH_KEY = "$(CODEPUSH_KEY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;

@@ -6,12 +6,28 @@ on:
 jobs:
   moviereminder-deploy-codepush:
     name: Deploy codepush update
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
+    env:
+      CODEPUSH_IOS_STAGING_KEY: ${{ secrets.CODEPUSH_IOS_STAGING_KEY }}
+      CODEPUSH_IOS_PROD_KEY: ${{ secrets.CODEPUSH_IOS_PROD_KEY }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+
+      - name: Creating prod.env file
+        env:
+          PROPERTIES_PATH: './ios/prod_env.xcconfig'
+        run: |
+          echo CODEPUSH_KEY = ${{ env.CODEPUSH_IOS_PROD_KEY }}
+
+      - name: Creating prod.env file
+        env:
+          PROPERTIES_PATH: './ios/staging_env.xcconfig'
+        run: |
+          echo CODEPUSH_KEY = ${{ env.CODEPUSH_IOS_STAGING_KEY }}
+
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Test
@@ -22,5 +38,3 @@ jobs:
           APPCENTER_TOKEN: ${{ secrets.APPCENTER_TOKEN }}
       - name: Deploy codepush update (iOS)
         run: yarn code-push-prod-ios
-      - name: Deploy codepush update (android)
-        run: yarn code-push-prod-android
