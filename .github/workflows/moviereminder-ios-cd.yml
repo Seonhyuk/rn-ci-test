@@ -1,4 +1,4 @@
-name: moviereminder-js-cd
+name: moviereminder-ios-cd
 on:
   push:
     branches:
@@ -16,18 +16,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Creating prod.env file
-        env:
-          PROPERTIES_PATH: './ios/prod_env.xcconfig'
-        run: |
-          echo CODEPUSH_KEY = ${{ env.CODEPUSH_IOS_PROD_KEY }}
-
-      - name: Creating prod.env file
-        env:
-          PROPERTIES_PATH: './ios/staging_env.xcconfig'
-        run: |
-          echo CODEPUSH_KEY = ${{ env.CODEPUSH_IOS_STAGING_KEY }}
-
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Test
@@ -37,4 +25,4 @@ jobs:
         env:
           APPCENTER_TOKEN: ${{ secrets.APPCENTER_TOKEN }}
       - name: Deploy codepush update (iOS)
-        run: yarn code-push-prod-ios
+        run: yarn code-push-staging-ios

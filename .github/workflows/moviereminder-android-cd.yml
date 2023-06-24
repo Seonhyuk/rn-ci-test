@@ -7,9 +7,6 @@ jobs:
   moviereminder-deploy-codepush:
     name: Deploy codepush update
     runs-on: ubuntu-latest
-    env:
-      CODEPUSH_ANDROID_STAGING_KEY: ${{ secrets.CODEPUSH_ANDROID_STAGING_KEY }}
-      CODEPUSH_ANDROID_PROD_KEY: ${{ secrets.CODEPUSH_ANDROID_PROD_KEY }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -25,4 +22,4 @@ jobs:
         env:
           APPCENTER_TOKEN: ${{ secrets.APPCENTER_TOKEN }}
       - name: Deploy codepush update (android)
-        run: yarn code-push-prod-android
+        run: yarn code-push-staging-android
