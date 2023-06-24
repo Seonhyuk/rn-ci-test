@@ -16,6 +16,18 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Creating prod.env file
+        env:
+          PROPERTIES_PATH: './ios/prod_env.xcconfig'
+        run: |
+          echo CODEPUSH_KEY = ${{ env.CODEPUSH_IOS_PROD_KEY }}
+
+      - name: Creating prod.env file
+        env:
+          PROPERTIES_PATH: './ios/staging_env.xcconfig'
+        run: |
+          echo CODEPUSH_KEY = ${{ env.CODEPUSH_IOS_STAGING_KEY }}
+
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Test
