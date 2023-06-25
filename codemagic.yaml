@@ -49,11 +49,11 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m1
     integrations:
-      app_store_connect: Test CodeMagic App
+      app_store_connect: moviereminder
     environment:
-      # ios_signing:
-      #   distribution_type: app_store
-      #   bundle_identifier: com.seonhyuk.moviereminder
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.seonhyuk.moviereminder
       vars:
         XCODE_WORKSPACE: 'MovieReminder.xcworkspace' # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: 'MovieReminder' # <-- Put the name of your Xcode scheme here
