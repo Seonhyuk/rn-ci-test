@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [ "ci" ]
+  pull_request:
+    branches: [ "ci" ]
+jobs:
+  build:
+    runs-on: maos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+      - name: Start xcode build 🛠
+        run: |
+          xcodebuild clean test -project ios/MovieReminder.xcodeproj -scheme MovieReminder -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.22'
