@@ -58,8 +58,8 @@ workflows:
         XCODE_WORKSPACE: 'MovieReminder.xcworkspace' # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: 'MovieReminder' # <-- Put the name of your Xcode scheme here
         APP_ID: 6450172852 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-      node: v16.11.1
-      xcode: 12.0
+      node: latest
+      xcode: 14.2
       cocoapods: default
     scripts:
       - name: Install npm dependencies
