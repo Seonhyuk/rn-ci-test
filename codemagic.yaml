@@ -55,9 +55,9 @@ workflows:
         distribution_type: app_store
         bundle_identifier: com.seonhyuk.moviereminder
       vars:
-        XCODE_WORKSPACE: 'MovieReminder.xcworkspace' # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: 'MovieReminder' # <-- Put the name of your Xcode scheme here
-        APP_ID: 6450172852 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+        XCODE_WORKSPACE: 'MovieReminder.xcworkspace'
+        XCODE_SCHEME: 'MovieReminder'
+        APP_ID: 6450172852
       node: latest
       xcode: 14.2
       cocoapods: default
